@@ -10,17 +10,17 @@ function scifipack.register_linelight(color, dyecolor)
 		node_box = {
 			type = "fixed",
 			fixed = {
-				-- {-0.06, -0.47, -0.5, 0.06, -0.5, 0.5},
-				{-0.5, -0.499, -0.5, 0.5, -0.5, 0.5}
+				{-0.06, -0.44, -0.5, 0.06, -0.5, 0.5},
+				{-0.5, -0.495, -0.5, 0.5, -0.495, 0.5}
 			}
 		},
 		tiles = {
 			"scifipack_linelight" .. dyecolor .. ".png",
 			"scifipack_linelight" .. dyecolor .. ".png",
-			"scifipack_transparent.png",
-			"scifipack_transparent.png",
-			"scifipack_transparent.png",
-			"scifipack_transparent.png"
+			"scifipack_white.png",
+			"scifipack_white.png",
+			"scifipack_white.png",
+			"scifipack_white.png"
 		},
 		on_place = minetest.rotate_node,
 		groups = {cracky = 2, oddly_breakable_by_hand = 3}
@@ -48,19 +48,18 @@ function scifipack.register_stairlight(color, dyecolor)
 		node_box = {
 			type = "fixed",
 			fixed = {
-				-- {-0.06, -0.48, 0.48, 0.06, 0.5, 0.5},
-				-- {-0.06, -0.48, -0.5, 0.06, -0.5, 0.48},
-
-				{-0.5, -0.5, 0.499, 0.5, 0.5, 0.5},
-				{-0.5, -0.499, -0.5, 0.5, -0.5, 0.5}
+				{-0.06, -0.44, 0.44, 0.06, 0.5, 0.5},
+				{-0.06, -0.44, -0.5, 0.06, -0.5, 0.44},
+				{-0.5, -0.5, 0.495, 0.5, 0.5, 0.495},
+				{-0.5, -0.495, -0.5, 0.5, -0.495, 0.5}
 
 			}
 		},
 		tiles = {
 			"scifipack_linelight" .. dyecolor .. ".png",
 			"scifipack_linelight" .. dyecolor .. ".png",
-			"scifipack_transparent.png",
-			"scifipack_transparent.png",
+			"scifipack_white.png",
+			"scifipack_white.png",
 			"scifipack_linelight" .. dyecolor .. ".png",
 			"scifipack_linelight" .. dyecolor .. ".png"
 		},
@@ -91,18 +90,18 @@ function scifipack.register_cornerlight(color, dyecolor)
 		node_box = {
 			type = "fixed",
 			fixed = {
-				-- {-0.06, -0.48, -0.5, 0.06, -0.5, 0.06},
-				-- {0.06, -0.48, -0.06, 0.5, -0.5, 0.06},
-				{-0.5, -0.499, -0.5, 0.5, -0.5, 0.5}
+				{-0.06, -0.44, -0.5, 0.06, -0.5, 0.06},
+				{0.06, -0.44, -0.06, 0.5, -0.5, 0.06},
+				{-0.5, -0.495, -0.5, 0.5, -0.495, 0.5}
 			}
 		},
 		tiles = {
 			"scifipack_cornerlight" .. dyecolor .. ".png",
 			"scifipack_cornerlight" .. dyecolor .. ".png",
-			"scifipack_transparent.png",
-			"scifipack_transparent.png",
-			"scifipack_transparent.png",
-			"scifipack_transparent.png"
+			"scifipack_white.png",
+			"scifipack_white.png",
+			"scifipack_white.png",
+			"scifipack_white.png"
 		},
 		on_place = minetest.rotate_node,
 		groups = {cracky = 2, oddly_breakable_by_hand = 3}
