@@ -1,26 +1,14 @@
 #Science Fiction mod package
-Originally made by foot_on_teh_hill
+A Minetest mod package made by foot\_on\_teh\_hill with contributors.
 
 ##Contributions by:
 Amaz
 
-##About:
-This mod adds a hexagon shaped floor as well as some half-transparent
-lights.
+##Mods included:
+- Scifipack Building (scifipack\_building)
+- Scifipack Neon Lights (scifipack\_neon)
 
-Contains nodes:
-
-- scifipack:hexfloor
-- scifipack:linelight[color]
-- scifipack:cornerlight[color]
-- scifipack:stairlight[color]
-
-[color] is one of the following:
-red, yellow, orange, blue, green, magenta, violet
-
-
-##Dependencies:
-This mod depends on the default and dye mods.
+See the README file for the individual mods to get more info about them.
 
 ##License:
 Source code: WTFPL Version 2
