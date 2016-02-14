@@ -7,6 +7,7 @@ Amaz
 ##Mods included:
 - Scifipack Building (scifipack\_building)
 - Scifipack Neon Lights (scifipack\_neon)
+- Scifipack Panels (scifipack\_panels)
 
 See the README file for the individual mods to get more info about them.
 
