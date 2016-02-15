@@ -3,6 +3,8 @@ scifipack_panels.setup_factory = function(meta)
 	local inv = meta:get_inventory()
 	local input_stack = inv:get_stack("input", 1)
 
+	inv:set_size("output", 20)
+
 	if input_stack ~= nil then
 		local stack_count = input_stack:get_count()
 		count = count + stack_count
@@ -23,29 +25,33 @@ scifipack_panels.setup_factory = function(meta)
 	inv:set_stack("output", 2 ,"scifipack_panels:dash " .. count)
 	inv:set_stack("output", 3 ,"scifipack_panels:line " .. count)
 	inv:set_stack("output", 4 ,"scifipack_panels:corner " .. count)
-	inv:set_stack("output", 5 ,"scifipack_panels:stripes_short " .. count)
-	inv:set_stack("output", 6 ,"scifipack_panels:stripes_long " .. count)
-	inv:set_stack("output", 7 ,"scifipack_panels:stripes_full " .. count)
-	inv:set_stack("output", 8 ,"scifipack_panels:lattice " .. count)
+	inv:set_stack("output", 5 ,"scifipack_panels:corner2 " .. count)
+	inv:set_stack("output", 6 ,"scifipack_panels:stripes_short " .. count)
+	inv:set_stack("output", 7 ,"scifipack_panels:stripes_long " .. count)
+	inv:set_stack("output", 8 ,"scifipack_panels:stripes_full " .. count)
+	inv:set_stack("output", 9 ,"scifipack_panels:lattice " .. count)
 
 	-- Rusty panels
-	inv:set_stack("output", 9 ,"scifipack_panels:full_rusty " .. count)
-	inv:set_stack("output", 10 ,"scifipack_panels:dash_rusty " .. count)
-	inv:set_stack("output", 11 ,"scifipack_panels:line_rusty " .. count)
-	inv:set_stack("output", 12 ,"scifipack_panels:corner_rusty " .. count)
-	inv:set_stack("output", 13 ,"scifipack_panels:stripes_short_rusty " .. count)
-	inv:set_stack("output", 14 ,"scifipack_panels:stripes_long_rusty " .. count)
-	inv:set_stack("output", 15 ,"scifipack_panels:stripes_full_rusty " .. count)
-	inv:set_stack("output", 16 ,"scifipack_panels:lattice_rusty " .. count)
+	inv:set_stack("output", 11 ,"scifipack_panels:full_rusty " .. count)
+	inv:set_stack("output", 12 ,"scifipack_panels:dash_rusty " .. count)
+	inv:set_stack("output", 13 ,"scifipack_panels:line_rusty " .. count)
+	inv:set_stack("output", 14 ,"scifipack_panels:corner_rusty " .. count)
+	inv:set_stack("output", 15 ,"scifipack_panels:corner2_rusty " .. count)
+	inv:set_stack("output", 16 ,"scifipack_panels:stripes_short_rusty " .. count)
+	inv:set_stack("output", 17 ,"scifipack_panels:stripes_long_rusty " .. count)
+	inv:set_stack("output", 18 ,"scifipack_panels:stripes_full_rusty " .. count)
+	inv:set_stack("output", 19 ,"scifipack_panels:lattice_rusty " .. count)
 
 	meta:set_string("formspec",
-		"size[8,9]"..
+		"size[9,9]"..
 		"label[0,0.2;Input:]"..
-		"label[2.5,0;The Panel Factory takes steel ingots or old panels as input]"..
-		"label[2.5,0.4;and produces new panels of your choice as output.]"..
 		"list[context;input;1,0;1,1;]"..
-		"label[0,1.5;Output:]"..
-		"list[context;output;0,2;8,2;]"..
+		"label[0,2;The Panel Factory]"..
+		"label[0,2.4;produces steel panels]"..
+		"label[0,2.8;out of steel ingots or]"..
+		"label[0,3.2;old steel panels.]"..
+		"label[2,0.2;Output:]"..
+		"list[context;output;3,0;5,4;]"..
 		"list[current_player;main;0,5;8,4;]"
 	);
 end
@@ -100,7 +106,6 @@ minetest.register_node("scifipack_panels:factory", {
 
 		local inv = meta:get_inventory()
 		inv:set_size("input", 1)
-		inv:set_size("output", 8*2)
 
 		scifipack_panels.setup_factory(meta)
 	end,
@@ -128,7 +133,7 @@ minetest.register_node("scifipack_panels:factory", {
 
 		local stack_name = stack:get_name()
 		local is_panel = minetest.get_item_group(stack_name, "scifipack_panel")
-		if listname == "input" and stack_name == "default:steel_ingot" or is_panel ~= 0 then
+		if listname == "input" and (stack_name == "default:steel_ingot" or is_panel ~= 0) then
 			return 99
 		end
 		return 0

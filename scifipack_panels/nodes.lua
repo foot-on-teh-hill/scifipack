@@ -22,12 +22,21 @@ scifipack_panels.register_panel = function(description_, node_name, texture_path
 			texture_path .. "^[transformFX",
 			texture_path
 		}
-	else
+	elseif is_corner == 1 then
 		node_definition.tiles = {
 			texture_path,
 			texture_path,
 			texture_path,
 			"scifipack_panels_metal.png",
+			"scifipack_panels_metal.png",
+			texture_path
+		}
+	else
+		node_definition.tiles = {
+			texture_path,
+			texture_path,
+			"scifipack_panels_metal.png",
+			texture_path,
 			"scifipack_panels_metal.png",
 			texture_path
 		}
@@ -55,7 +64,8 @@ end
 scifipack_panels.register_panel("Steel Full Panel", "full", "scifipack_panels_full.png")
 scifipack_panels.register_panel("Steel Dash Panel", "dash", "scifipack_panels_dash.png")
 scifipack_panels.register_panel("Steel Line Panel", "line", "scifipack_panels_line.png")
-scifipack_panels.register_panel("Steel Corner Panel", "corner", "scifipack_panels_corner.png", true)
+scifipack_panels.register_panel("Steel Corner Panel", "corner", "scifipack_panels_corner.png", 1)
+scifipack_panels.register_panel("Steel Corner 2 Panel", "corner2", "scifipack_panels_corner2.png", 2)
 scifipack_panels.register_panel("Steel Short Stripes Panel", "stripes_short", "scifipack_panels_stripes_short.png")
 scifipack_panels.register_panel("Steel Long Stripes Panel", "stripes_long", "scifipack_panels_stripes_long.png")
 scifipack_panels.register_panel("Steel Full Stripes Panel", "stripes_full", "scifipack_panels_stripes_full.png")
