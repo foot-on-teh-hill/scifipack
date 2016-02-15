@@ -1,10 +1,9 @@
-minetest.register_node("scifipack_building:hexfloor", {
-	description = "Hexagon Floor",
-	tiles = {"scifipack_building_hexfloor.png"},
-	groups = {cracky = 2, level = 1}
-})
-
 local stair_nodes = {
+	["hexfloor"] = {
+		description = "Hexagon Floor",
+		tiles = {"scifipack_building_hexfloor.png"},
+		groups = {cracky = 2, level = 1}
+	},
 	["steelpanel1"] = {
 		description = "Steel Panel 1",
 		tiles = {"scifipack_building_steelpanel1.png"},
