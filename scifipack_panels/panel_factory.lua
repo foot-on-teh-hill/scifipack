@@ -157,7 +157,16 @@ minetest.register_node("scifipack_panels:factory", {
 	end,
 	on_metadata_inventory_take = function(pos, listname, index, stack, player)
 		local meta = minetest.get_meta(pos)
-
+		local inv = meta:get_inventory()
+		local input_stack = inv:get_stack(listname,  index)
+		if not input_stack:is_empty() and input_stack:get_name() ~= stack:get_name() then
+			local player_inv = player:get_inventory()
+			if player_inv:room_for_item("main", input_stack) then
+				return input_stack
+			end
+			scifipack_panels.setup_factory(meta) 
+			return
+		end	
 		if listname == "output" then
 			local stack_count = stack:get_count()
 			local count = meta:get_int("count")
