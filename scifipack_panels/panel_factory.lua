@@ -1,3 +1,29 @@
+scifipack_panels.inventory_node_names = {
+	-- Regular panels
+	"scifipack_panels:full",
+	"scifipack_panels:dash",
+	"scifipack_panels:line",
+	"scifipack_panels:corner",
+	"scifipack_panels:corner2",
+	"scifipack_panels:stripes_short",
+	"scifipack_panels:stripes_long",
+	"scifipack_panels:stripes_full",
+	"scifipack_panels:lattice",
+	"",
+
+	-- Rusty panels
+	"scifipack_panels:full_rusty",
+	"scifipack_panels:dash_rusty",
+	"scifipack_panels:line_rusty",
+	"scifipack_panels:corner_rusty",
+	"scifipack_panels:corner2_rusty",
+	"scifipack_panels:stripes_short_rusty",
+	"scifipack_panels:stripes_long_rusty",
+	"scifipack_panels:stripes_full_rusty",
+	"scifipack_panels:lattice_rusty",
+	""
+}
+
 scifipack_panels.setup_factory = function(meta)
 	local count = meta:get_int("count")
 	local inv = meta:get_inventory()
@@ -20,27 +46,12 @@ scifipack_panels.setup_factory = function(meta)
 
 	meta:set_int("count", count)
 
-	-- Regular panels
-	inv:set_stack("output", 1 ,"scifipack_panels:full " .. count)
-	inv:set_stack("output", 2 ,"scifipack_panels:dash " .. count)
-	inv:set_stack("output", 3 ,"scifipack_panels:line " .. count)
-	inv:set_stack("output", 4 ,"scifipack_panels:corner " .. count)
-	inv:set_stack("output", 5 ,"scifipack_panels:corner2 " .. count)
-	inv:set_stack("output", 6 ,"scifipack_panels:stripes_short " .. count)
-	inv:set_stack("output", 7 ,"scifipack_panels:stripes_long " .. count)
-	inv:set_stack("output", 8 ,"scifipack_panels:stripes_full " .. count)
-	inv:set_stack("output", 9 ,"scifipack_panels:lattice " .. count)
+	for index, node_name in ipairs(scifipack_panels.inventory_node_names) do
+		if node_name:len() then
+			inv:set_stack("output", index, node_name .. " " .. count)
+		end
+	end
 
-	-- Rusty panels
-	inv:set_stack("output", 11 ,"scifipack_panels:full_rusty " .. count)
-	inv:set_stack("output", 12 ,"scifipack_panels:dash_rusty " .. count)
-	inv:set_stack("output", 13 ,"scifipack_panels:line_rusty " .. count)
-	inv:set_stack("output", 14 ,"scifipack_panels:corner_rusty " .. count)
-	inv:set_stack("output", 15 ,"scifipack_panels:corner2_rusty " .. count)
-	inv:set_stack("output", 16 ,"scifipack_panels:stripes_short_rusty " .. count)
-	inv:set_stack("output", 17 ,"scifipack_panels:stripes_long_rusty " .. count)
-	inv:set_stack("output", 18 ,"scifipack_panels:stripes_full_rusty " .. count)
-	inv:set_stack("output", 19 ,"scifipack_panels:lattice_rusty " .. count)
 
 	meta:set_string("formspec",
 		"size[9,9]"..
