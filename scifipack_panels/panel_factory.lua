@@ -24,7 +24,7 @@ scifipack_panels.inventory_node_names = {
 	""
 }
 
-scifipack_panels.setup_factory = function(meta)
+scifipack_panels.setup_factory = function(meta, preserve_index)
 	local count = meta:get_int("count")
 	local inv = meta:get_inventory()
 	local input_stack = inv:get_stack("input", 1)
@@ -47,7 +47,7 @@ scifipack_panels.setup_factory = function(meta)
 	meta:set_int("count", count)
 
 	for index, node_name in ipairs(scifipack_panels.inventory_node_names) do
-		if node_name:len() then
+		if node_name:len() and index ~= preserve_index then
 			inv:set_stack("output", index, node_name .. " " .. count)
 		end
 	end
@@ -170,14 +170,26 @@ minetest.register_node("scifipack_panels:factory", {
 		local meta = minetest.get_meta(pos)
 
 		if listname == "output" then
-			local stack_count = stack:get_count()
-			local count = meta:get_int("count")
-			count = count - stack_count
-			if count < 0 then
-				count = 0
+			local leftover_stack = meta:get_inventory():get_stack(listname, index)
+			local preserve_index = nil
+
+			-- Handle cases where item stacks are automatically moved into the node inventory when
+			-- there is no room in the player inventory stack or it contains a different type
+			if not leftover_stack:is_empty() then
+				if leftover_stack:get_name() ~= scifipack_panels.inventory_node_names[index] then
+					-- Preserve disallowed nodes without counting them
+					preserve_index = index
+					meta:set_int("count", 0)
+				else
+					-- Update count for normal leftovers or switched stacks of same type
+					meta:set_int("count", leftover_stack:get_count())
+				end
+			else
+				-- No leftover, set everything to 0
+				meta:set_int("count", 0)
 			end
-			meta:set_int("count", count)
-			scifipack_panels.setup_factory(meta)
+
+			scifipack_panels.setup_factory(meta, preserve_index)
 		end
 	end
 })
